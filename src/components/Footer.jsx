@@ -102,6 +102,8 @@ const Footer = () => {
     { label: 'About', to: '/about' },
     { label: 'Terms of Service', to: '/terms' },
     { label: 'Privacy Policy', to: '/privacy-policy' },
+    { label: 'Fiverr', to: 'https://www.fiverr.com/sellers/ranjithkumar31/' },
+    { label: 'Upwork', to: '' },
   ];
 
   const serviceBoxes = [[], [], [], []];

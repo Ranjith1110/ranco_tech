@@ -17,17 +17,17 @@ const teamMembers = [
     },
     bio: 'Visionary leader and founder with a drive to lead innovative tech solutions and build great teams.',
   },
-  // {
-  //   name: 'Ranjith',
-  //   role: 'CTO • Software Team Lead • Full Stack Developer',
-  //   image: '/team/ranjith.png',
-  //   socials: {
-  //     linkedin: 'https://www.linkedin.com/in/ranjithnatarajan009/',
-  //     github: '#',
-  //     email: '#',
-  //   },
-  //   bio: 'Experienced full stack developer and tech lead, shaping the company’s technology strategy and architecture.',
-  // },
+  {
+    name: 'Ranjith',
+    role: 'CTO • Software Team Lead • Full Stack Developer',
+    image: '/team/ranjith.png',
+    socials: {
+      linkedin: 'https://www.linkedin.com/in/ranjithnatarajan009/',
+      github: '#',
+      email: '#',
+    },
+    bio: 'Experienced full stack developer and tech lead, shaping the company’s technology strategy and architecture.',
+  },
   {
     name: 'Mohamed Abdul Aziz',
     role: 'Backend Developer • WordPress Developer',
@@ -41,7 +41,7 @@ const teamMembers = [
   },
   {
     name: 'Tanbir Alam',
-    role: 'Frontend Developer',
+    role: 'Full Stack Developer',
     image: '/team/tanbir.png',
     socials: {
       linkedin: 'https://www.linkedin.com/in/tanbiralam/',

@@ -10,13 +10,13 @@ const projects = [
     image: 'projects/project1.png',
     link: 'https://18siddharsresearch.com/',
   },
-  // {
-  //   title: 'Water Solution Technologies',
-  //   description:
-  //     'Innovative technologies addressing water scarcity and purification for sustainable living.',
-  //   image: 'projects/project2.png',
-  //   link: '#',
-  // },
+  {
+    title: 'Sol Sprint',
+    description:
+      'A clean and modern website designed for a blockchain-based sprint event. It showcases upcoming events, tracks participation, and provides an engaging interface for users to explore blockchain sprint challenges and solutions.',
+    image: 'projects/solsprint.xyz_.png',
+    link: 'https://solsprint.xyz/',
+  },
   {
     title: 'Pech Weg',
     description:
