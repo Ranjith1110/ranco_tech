@@ -39,7 +39,7 @@ const App = () => {
                 <TechExpertise/>
                 <Services />
                 <Projects />
-                <OurTeam />
+                {/* <OurTeam /> */}
                 <FAQ />
                 <OurClients/>
                 <WorldMap />

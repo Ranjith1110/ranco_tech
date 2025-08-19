@@ -28,7 +28,7 @@ const navItems = [
   { label: 'About', to: '/about' }, 
   { label: 'Services', to:'/services', dropdown: true }, 
   { label: 'Projects', to: '/projects' }, 
-  { label: 'Our Team', to: '/team' }, 
+  // { label: 'Our Team', to: '/team' }, 
   { label: 'FAQ', to: '/faq' }, 
   { label: 'Testimonial', to: '/testimonial' }, 
   { label: 'Contact', to: '/contact', isButton: true }, 
