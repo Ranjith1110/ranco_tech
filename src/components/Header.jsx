@@ -24,14 +24,14 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { label: 'Home', to: '/' }, 
-  { label: 'About', to: '/about' }, 
-  { label: 'Services', to:'/services', dropdown: true }, 
-  { label: 'Projects', to: '/projects' }, 
-  // { label: 'Our Team', to: '/team' }, 
-  { label: 'FAQ', to: '/faq' }, 
-  { label: 'Testimonial', to: '/testimonial' }, 
-  { label: 'Contact', to: '/contact', isButton: true }, 
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services', dropdown: true },
+  { label: 'Projects', to: '/projects' },
+  // { label: 'Our Team', to: '/team' },
+  { label: 'FAQ', to: '/faq' },
+  { label: 'Testimonial', to: '/testimonial' },
+  { label: 'Contact', to: '/contact', isButton: true },
 ];
 
 const menuData = [
@@ -106,7 +106,7 @@ const Header = () => {
 
   // Function to handle closing the dropdown when a menu item is clicked
   const handleItemClick = () => {
-    setMobileDropdownOpen(false); 
+    setMobileDropdownOpen(false);
     setDesktopDropdownOpen(false);
     setMenuOpen(false); // Close the main menu when an item is clicked in mobile view
   };
@@ -114,7 +114,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-md font-[Montserrat]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 h-[72px] flex items-center justify-between">
-        
+
         <Link to="/" className="text-2xl font-bold tracking-tight">
           <span className="text-[#FF6F00]">RanCo</span>
           <span className="text-[#0D5F53]">Tech</span>
@@ -202,7 +202,7 @@ const Header = () => {
                             smooth={true}
                             duration={500}
                             className="block text-[#0D5F53] hover:text-[#FF6F00] cursor-pointer"
-                            onClick={handleItemClick} 
+                            onClick={handleItemClick}
                           >
                             • {item.label}
                           </Link>
@@ -218,7 +218,7 @@ const Header = () => {
                 to={item.to}
                 smooth={true}
                 duration={500}
-                onClick={handleItemClick} 
+                onClick={handleItemClick}
                 className="inline-block mt-2 bg-[#FF6F00] text-white rounded-full px-4 py-2 hover:bg-[#ffa733] transition"
               >
                 {item.label} →
@@ -244,7 +244,7 @@ const Header = () => {
 
 const DropdownSection = ({ title, items, onItemClick }) => (
   <div>
-       <h4 className="text-xs font-semibold text-gray-500 uppercase mb-3">{title}</h4>
+    <h4 className="text-xs font-semibold text-gray-500 uppercase mb-3">{title}</h4>
     {items.map(({ icon, label, desc, to }, i) => (
       <DropdownItem key={i} icon={icon} label={label} desc={desc} to={to} onItemClick={onItemClick} />
     ))}
@@ -257,7 +257,7 @@ const DropdownItem = ({ icon, label, desc, to, onItemClick }) => (
     smooth={true}
     duration={500}
     className="flex items-start space-x-3 py-2 hover:bg-gray-50 rounded-md px-2 transition cursor-pointer"
-    onClick={onItemClick} 
+    onClick={onItemClick}
   >
     <div className="p-2 bg-orange-100 rounded-md text-[#FF6F00]">{icon}</div>
     <div>
