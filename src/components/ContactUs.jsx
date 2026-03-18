@@ -13,42 +13,48 @@ const Contact = () => {
     message: ''
   });
   const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const inputStyle =
     'border border-gray-300 rounded-2xl px-5 py-3 bg-white text-sm text-gray-800 ' +
     'shadow-sm placeholder-gray-400 ' +
-    'focus:outline-none focus:ring-2 focus:ring-[#0D5F53] focus:border-transparent transition duration-300 ease-in-out';
+    'focus:outline-none focus:ring-2 focus:ring-[#0D5F53] focus:border-transparent transition duration-300 ease-in-out w-full';
 
-  // Submit Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('Sending...');
+    setLoading(true);
 
-    // Replace this with your actual Google Apps Script Web App URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmR68CnlVd6ngfdB1hdrYhJxDmRMSlaAcMmNVWdtTvIj7ux2ZeFm9ZWtAjLBb7A3ru/exec';
+    const formData = new FormData();
+    formData.append("name", e.target.name.value);
+    formData.append("email", e.target.email.value);
+    formData.append("mobile", e.target.mobile.value);
+    formData.append("service", e.target.service.value);
 
     try {
-      const response = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify(formData),
-      });
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbz0_QnjRGpJm3PtmZ2-nbp75H_Xqy_U-rss_7okFFiCmGEjLhAJpnu_c8-E-bTD49a2NQ/exec",
+        {
+          method: "POST",
+          body: formData, // 🔥 IMPORTANT
+        }
+      );
 
-      const result = await response.json();
-      if (result.result === 'success') {
-        setStatus('Message Sent Successfully!');
-        setFormData({ name: '', email: '', project: '', message: '' }); // Reset form
-      } else {
-        setStatus('Something went wrong. Try again.');
-      }
+      alert("Lead stored in Google Sheet ✅");
+      e.target.reset();
     } catch (error) {
-      setStatus('Error sending message.');
+      alert("Submission failed ❌");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
+
 
   return (
     <section className="relative w-full py-24 bg-gradient-to-br from-[#e8f0f2] to-[#f4f9f9] font-['Montserrat']">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
+
+        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,6 +65,7 @@ const Contact = () => {
         </motion.h2>
 
         <div className="grid lg:grid-cols-2 gap-14 items-center">
+
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -68,17 +75,17 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-semibold text-[#0D5F53]">Get In Touch</h3>
             <p className="text-[#4A6D6F] max-w-md">
-              Reach out for collaborations, queries or just to say hi. We’d love to hear from you!
+              Reach out for collaborations, queries or just to say hi.
             </p>
 
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <MapPin className="text-[#0D5F53]" />
-                <span>Siruganpur, Trichy, Tamil Nadu, India</span>
+                <span>Trichy, Tamil Nadu, India</span>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="text-[#0D5F53]" />
-                <span>+91 8778597451</span>
+                <span>+91 93616 60714</span>
               </div>
               <div className="flex items-center gap-4">
                 <Mail className="text-[#0D5F53]" />
@@ -87,92 +94,71 @@ const Contact = () => {
             </div>
 
             <div className="flex gap-6 pt-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="text-gray-700 hover:text-[#0077B5] transition" />
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                <Linkedin className="text-gray-700 hover:text-[#0077B5]" />
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="text-gray-700 hover:text-black transition" />
+              <a href="https://github.com" target="_blank" rel="noreferrer">
+                <Github className="text-gray-700 hover:text-black" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Instagram className="text-gray-700 hover:text-pink-500 transition" />
+              <a href="https://instagram.com" target="_blank" rel="noreferrer">
+                <Instagram className="text-gray-700 hover:text-pink-500" />
               </a>
             </div>
           </motion.div>
 
           {/* Contact Form */}
           <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             onSubmit={handleSubmit}
             className="bg-white/60 backdrop-blur-xl p-8 rounded-3xl shadow-2xl space-y-6"
           >
+            {/* Name & Email */}
             <div className="grid sm:grid-cols-2 gap-6">
-              <input 
-                type="text" 
-                placeholder="Your Name" 
-                className={inputStyle} 
-                required 
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-              />
-              <input 
-                type="email" 
-                placeholder="Your Email" 
-                className={inputStyle} 
-                required 
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-              />
+              <input name="name" type="text" placeholder="Your Name" className={inputStyle} required />
+              <input name="email" type="email" placeholder="Your Email" className={inputStyle} required />
             </div>
-            
-            {/* Project Dropdown */}
-            <select
-              className={`${inputStyle} w-full appearance-none`}
-              required
-              value={formData.project}
-              onChange={(e) => setFormData({...formData, project: e.target.value})}
-            >
-              <option value="" disabled>Select Project Type</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile App Development">Mobile App Development</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="SEO">SEO</option>
-            </select>
 
-            <textarea
-              rows="4"
-              placeholder="Message"
-              className={`${inputStyle} w-full resize-none rounded-2xl`}
-              required
-              value={formData.message}
-              onChange={(e) => setFormData({...formData, message: e.target.value})}
-            ></textarea>
-            
+            {/* Mobile & Service */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              <input
+                name="mobile"
+                type="tel"
+                pattern="[0-9]{10}"
+                placeholder="Mobile Number"
+                className={inputStyle}
+                required
+              />
+
+              <select name="service" className={inputStyle} required>
+                <option value="">Select Service</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile App Development">Mobile App Development</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="SEO">SEO</option>
+              </select>
+            </div>
+
+            {/* Submit */}
             <button
               type="submit"
-              disabled={status === 'Sending...'}
-              className="bg-[#0D5F53] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#0a4c42] transition duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+              disabled={loading}
+              className="bg-[#0D5F53] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#0a4c42] transition duration-300 w-full"
             >
-              {status || 'Send Message'}
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
           </motion.form>
         </div>
 
         {/* Google Map */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mt-20 overflow-hidden rounded-3xl shadow-xl"
-        >
+        <motion.div className="mt-20 overflow-hidden rounded-3xl shadow-xl">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.6931191433553!2d78.92450251144998!3d11.160013351570682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bab1ddfdc74838d%3A0xf31882d27f724010!2sSiruganpur%20Postoffice!5e0!3m2!1sen!2sin!4v1712646149015!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=..."
             width="100%"
             height="400"
-            allowFullScreen=""
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-[400px] border-none rounded-3xl"
           ></iframe>
         </motion.div>
