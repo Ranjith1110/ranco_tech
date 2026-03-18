@@ -211,52 +211,45 @@ const ServicesPage = () => {
             const Icon = service.icon;
             return (
               <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between h-full"
-              id={service.id}
-            >
-              <div>
-                <div className="flex items-center justify-center mb-4">
-                  <Icon size={36} className="text-[#FF6F00]" />
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between h-full"
+                id={service.id}
+              >
+                <div>
+                  <div className="flex items-center justify-center mb-4">
+                    <Icon size={36} className="text-[#FF6F00]" />
+                  </div>
+                  <h4 className="text-xl font-bold text-[#0D5F53] mb-2">{service.name}</h4>
+                  <p className="text-sm font-semibold text-[#138074] mb-4">{service.price}</p>
+
+                  {service.features.length > 0 ? (
+                    <ul className="space-y-3 mb-4 text-left">
+                      {service.features.map((feat, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-[#FF6F00] mt-1">•</span>
+                          <p className="text-sm text-[#425E57]">{feat}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-sm text-[#425E57] mb-4">Contact for more details.</p>
+                  )}
                 </div>
-                <h4 className="text-xl font-bold text-[#0D5F53] mb-2">{service.name}</h4>
-                <p className="text-sm font-semibold text-[#138074] mb-4">{service.price}</p>
-            
-                {service.features.length > 0 ? (
-                  <ul className="space-y-3 mb-4 text-left">
-                    {service.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-[#FF6F00] mt-1">•</span>
-                        <p className="text-sm text-[#425E57]">{feat}</p>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-sm text-[#425E57] mb-4">Contact for more details.</p>
-                )}
-              </div>
-            
-              <div className="mt-auto pt-4 flex gap-3">
-                <a
-                  href="tel:+919361660714"
-                  className="w-1/2 inline-flex items-center justify-center bg-[#FF6F00] text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-[#e55f00] transition-all duration-300 transform hover:scale-105"
-                >
-                  <Phone size={16} className="mr-2" />
-                  Contact Us
-                </a>
-                <a
-                  href="#pay"
-                  className="w-1/2 inline-flex items-center justify-center bg-[#138074] text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-[#116c5a] transition-all duration-300 transform hover:scale-105"
-                >
-                  <CreditCard size={16} className="mr-2" />
-                  Pay
-                </a>
-              </div>
-            </motion.div>
-            
+
+                <div className="mt-auto pt-4 flex justify-center">
+                  <a
+                    href="tel:+919361660714"
+                    className="inline-flex items-center justify-center bg-[#FF6F00] text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-[#e55f00] transition-all duration-300 transform hover:scale-105"
+                  >
+                    <Phone size={16} className="mr-2" />
+                    Contact Us
+                  </a>
+                </div>
+              </motion.div>
+
             )
           })}
         </div>

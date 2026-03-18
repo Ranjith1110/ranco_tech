@@ -1,14 +1,50 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, MapPin, Phone, Linkedin, Github, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    project: '',
+    message: ''
+  });
+  const [status, setStatus] = useState('');
+
   const inputStyle =
     'border border-gray-300 rounded-2xl px-5 py-3 bg-white text-sm text-gray-800 ' +
     'shadow-sm placeholder-gray-400 ' +
     'focus:outline-none focus:ring-2 focus:ring-[#0D5F53] focus:border-transparent transition duration-300 ease-in-out';
+
+  // Submit Handler
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('Sending...');
+
+    // Replace this with your actual Google Apps Script Web App URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmR68CnlVd6ngfdB1hdrYhJxDmRMSlaAcMmNVWdtTvIj7ux2ZeFm9ZWtAjLBb7A3ru/exec';
+
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (result.result === 'success') {
+        setStatus('Message Sent Successfully!');
+        setFormData({ name: '', email: '', project: '', message: '' }); // Reset form
+      } else {
+        setStatus('Something went wrong. Try again.');
+      }
+    } catch (error) {
+      setStatus('Error sending message.');
+      console.error(error);
+    }
+  };
 
   return (
     <section className="relative w-full py-24 bg-gradient-to-br from-[#e8f0f2] to-[#f4f9f9] font-['Montserrat']">
@@ -68,24 +104,57 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            onSubmit={handleSubmit}
             className="bg-white/60 backdrop-blur-xl p-8 rounded-3xl shadow-2xl space-y-6"
           >
             <div className="grid sm:grid-cols-2 gap-6">
-              <input type="text" placeholder="Your Name" className={inputStyle} required />
-              <input type="email" placeholder="Your Email" className={inputStyle} required />
+              <input 
+                type="text" 
+                placeholder="Your Name" 
+                className={inputStyle} 
+                required 
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+              />
+              <input 
+                type="email" 
+                placeholder="Your Email" 
+                className={inputStyle} 
+                required 
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+              />
             </div>
-            <input type="text" placeholder="Project" className={`${inputStyle} w-full`} required />
+            
+            {/* Project Dropdown */}
+            <select
+              className={`${inputStyle} w-full appearance-none`}
+              required
+              value={formData.project}
+              onChange={(e) => setFormData({...formData, project: e.target.value})}
+            >
+              <option value="" disabled>Select Project Type</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Mobile App Development">Mobile App Development</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="SEO">SEO</option>
+            </select>
+
             <textarea
               rows="4"
               placeholder="Message"
               className={`${inputStyle} w-full resize-none rounded-2xl`}
               required
+              value={formData.message}
+              onChange={(e) => setFormData({...formData, message: e.target.value})}
             ></textarea>
+            
             <button
               type="submit"
-              className="bg-[#0D5F53] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#0a4c42] transition duration-300"
+              disabled={status === 'Sending...'}
+              className="bg-[#0D5F53] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#0a4c42] transition duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Send Message
+              {status || 'Send Message'}
             </button>
           </motion.form>
         </div>
