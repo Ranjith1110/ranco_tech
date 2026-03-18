@@ -27,7 +27,7 @@ const App = () => {
       <Header />
       <ScrollToTop /> {/* Place ScrollToTop here */}
       <AdBanner />
-      <div className="pt-20">
+      <div className="">
         <Routes>
           <Route 
             path="/" 
