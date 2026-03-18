@@ -239,20 +239,13 @@ const ServicesPage = () => {
                 )}
               </div>
             
-              <div className="mt-auto pt-4 flex gap-3">
+              <div className="mt-auto pt-4 w-full">
                 <a
                   href="tel:+919361660714"
                   className="w-1/2 inline-flex items-center justify-center bg-[#FF6F00] text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-[#e55f00] transition-all duration-300 transform hover:scale-105"
                 >
                   <Phone size={16} className="mr-2" />
                   Contact Us
-                </a>
-                <a
-                  href="#pay"
-                  className="w-1/2 inline-flex items-center justify-center bg-[#138074] text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-[#116c5a] transition-all duration-300 transform hover:scale-105"
-                >
-                  <CreditCard size={16} className="mr-2" />
-                  Pay
                 </a>
               </div>
             </motion.div>
