@@ -55,7 +55,7 @@ const AboutPage = () => {
             enterprise application solutions, web application, IT consulting & mobile app
             development services to clients across the globe. We offer an extensive range of
             innovative software development services to our customers using Open Source,
-            Native & hybrid mobile applications, and front-end technologies.
+            Native & hybrid mobile applications, and front-end .
           </motion.p>
 
           <motion.p
