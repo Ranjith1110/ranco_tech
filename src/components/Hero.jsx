@@ -67,7 +67,7 @@ const HeroSection = () => {
                 to="/ServicesPage"
                 className="bg-transparent border-2 border-[#0D5F53] text-[#0D5F53] py-3 px-6 sm:px-8 rounded-full text-sm sm:text-base font-semibold shadow-md transition duration-300 ease-in-out inline-block text-center"
               >
-                Explore Our Services
+                Explore Our 
               </RouterLink>
             </motion.div>
           </div>
