@@ -14,7 +14,7 @@ import FAQPage from './pages/FaqPage';
 import OurTeam from './components/OurTeam';
 import FAQ from './components/Faq';
 import Testimonial from './components/Testimonial';
-import ScrollToTop from './components/ScrollToTop'; // Import ScrollToTop
+import ScrollToTop from './components/ScrollToTop'; 
 import OurClients from './components/OurClients';
 import WorldMap from './components/WorldMap';
 import ContactUs from './components/ContactUs';
@@ -25,7 +25,7 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <ScrollToTop /> {/* Place ScrollToTop here */}
+      <ScrollToTop />
       <AdBanner />
       <div className="">
         <Routes>

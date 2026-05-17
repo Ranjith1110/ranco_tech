@@ -18,57 +18,29 @@ const categorizedTech = [
     title: 'Web Development',
     items: [
       { name: 'React.js', icon: <FaReact className="text-sky-500" /> },
-      // { name: 'Angular', icon: <SiAngular className="text-red-600" /> },
-      { name: 'PHP', icon: <FaPhp className="text-indigo-800" /> },
-      { name: 'Laravel', icon: <FaLaravel className="text-red-500" /> },
       { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" /> },
       { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" /> },
       { name: 'Bootstrap', icon: <FaBootstrap className="text-purple-700" /> },
       { name: 'Tailwind', icon: <SiTailwindcss className="text-cyan-500" /> },
       { name: 'JavaScript', icon: <FaJs className="text-yellow-400" /> },
       { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
-      { name: 'Django', icon: <SiDjango className="text-green-800" /> },
     ],
   },
-  // {
-  //   title: 'Cloud Solutions',
-  //   items: [
-  //     { name: 'AWS', icon: <FaCloud className="text-orange-400" /> },
-  //     { name: 'Azure', icon: <FaWindows className="text-blue-700" /> },
-  //     { name: 'Google Cloud', icon: <SiGooglecloud className="text-blue-500" /> },
-  //   ],
-  // },
+
   {
     title: 'Mobile Apps',
     items: [
       { name: 'Flutter', icon: <SiFlutter className="text-sky-400" /> },
       { name: 'Dart', icon: <SiDart className="text-blue-500" /> },
       { name: 'React Native', icon: <FaReact className="text-cyan-600" /> },
-      // { name: 'Swift', icon: <FaSwift className="text-orange-600" /> },
     ],
   },
-  // {
-  //   title: 'DevOps & Automation',
-  //   items: [
-  //     { name: 'Docker', icon: <SiDocker className="text-blue-500" /> },
-  //     { name: 'Kubernetes', icon: <SiKubernetes className="text-indigo-500" /> },
-  //     { name: 'CI/CD', icon: <SiNginx className="text-green-700" /> },
-  //   ],
-  // },
-  // {
-  //   title: 'AI & ML',
-  //   items: [
-  //     { name: 'Python', icon: <SiPython className="text-yellow-500" /> },
-  //     { name: 'TensorFlow', icon: <SiTensorflow className="text-orange-600" /> },
-  //     { name: 'NLP Models', icon: <SiPython className="text-emerald-700" /> },
-  //   ],
-  // },
   {
     title: 'Database',
     items: [
       { name: 'MySQL', icon: <SiMysql className="text-blue-800" /> },
       { name: 'MongoDB', icon: <SiMongodb className="text-green-600" /> },
-      // { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-500" /> },  
+      { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-500" /> },  
       { name: 'Firebase', icon: <SiFirebase className="text-yellow-500" /> },
 
     ],

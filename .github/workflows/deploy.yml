@@ -1,4 +1,4 @@
-name: Deploy React App to Hostinger
+name: Deploy RanCo Technology Website
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
       - master
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Project
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -21,10 +21,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Project
+      - name: Build Vite Project
         run: npm run build
 
-      - name: Deploy to Hostinger FTP
+      - name: Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -32,5 +32,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          local-dir: dist/
-          server-dir: public_html/
+          local-dir: ./dist/
+          server-dir: /public_html/
