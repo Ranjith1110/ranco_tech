@@ -41,7 +41,7 @@ const HeroSection = () => {
             transition={{ delay: 0.4, duration: 1 }}
             className="mt-4 max-w-xl text-[#425E57] text-base sm:text-lg mx-auto lg:mx-0"
           >
-            At Ranco Tech, we craft high-performance digital solutions that accelerate business growth and transform ideas into powerful products.
+            At Ranco Tec, we craft high-performance digital solutions that accelerate business growth and transform ideas into powerful products.
           </motion.p>
 
           <div className="mt-6 flex flex-col sm:flex-row justify-center sm:justify-start gap-6 sm:gap-4">
