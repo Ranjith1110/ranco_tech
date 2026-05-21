@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: '/',
   theme: {
     extend: {
       fontFamily: {
