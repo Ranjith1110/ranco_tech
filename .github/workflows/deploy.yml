@@ -3,8 +3,7 @@ name: Deploy React App to Hostinger
 on:
   push:
     branches:
-      - main
-
+      - master
 jobs:
   deploy:
     runs-on: ubuntu-latest
